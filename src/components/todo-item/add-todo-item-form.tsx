@@ -53,7 +53,7 @@ export default function AddTodoItemForm({ todoListId }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full p-5">
+    <div className="flex flex-col items-center justify-center w-full p-5 mt-2 border rounded-md">
       <h1 className="text-lg">Add new todo</h1>
       <form
         onSubmit={form.handleSubmit(onSubmit)}

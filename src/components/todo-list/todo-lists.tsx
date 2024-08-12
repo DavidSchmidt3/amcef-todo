@@ -1,5 +1,5 @@
 import TodoList from "@/components/todo-list";
-import AddTodoListForm from "@/components/todo-list/form/add-todo-list-form";
+import AddTodoListForm from "@/components/todo-list/add-todo-list-form";
 import { useTodoLists } from "@/hooks/data/todo-lists";
 
 export default function Todolists() {

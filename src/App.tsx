@@ -1,12 +1,12 @@
-import Navbar from "@/components/navbar";
-import Providers from "@/components/providers";
-import TodoLists from "@/components/todo-list/todo-lists";
+import { queryClient } from "@/lib/react-query";
+import { router } from "@/router";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider } from "@tanstack/react-router";
 
 export default function App() {
   return (
-    <Providers>
-      <Navbar />
-      <TodoLists />
-    </Providers>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }

@@ -1,17 +1,19 @@
 import { useTheme } from "@/hooks/theme";
-import { Button } from "@headlessui/react";
+import { Link } from "@tanstack/react-router";
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
+  useTheme();
 
   return (
     <header className="flex justify-between w-full p-4 border-b">
-      <Button
-        onClick={() => toggleTheme()}
-        className="px-4 py-2 text-sm rounded bg-primary"
-      >
-        Prepnúť na {theme === "light" ? "tmavú" : "svetlú"} tému
-      </Button>
+      <nav className="flex gap-4 px-4">
+        <Link to="/" className="[&.active]:font-bold">
+          Home
+        </Link>
+        <Link to="/settings" className="[&.active]:font-bold">
+          Settings
+        </Link>
+      </nav>
     </header>
   );
 }

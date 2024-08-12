@@ -1,11 +1,12 @@
-import { AddTodoListFormValues } from "@/components/todo-list/add-todo-list-form";
+import { AddTodoListFormValues } from "@/components/todo-list/form/add-todo-list-form";
 import { API_URL, queryClient } from "@/lib/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const TODO_LISTS_KEY = "todo_lists";
+export const TODO_LISTS_KEY = "todo_lists";
+export type FilterOptions = "all" | "active" | "completed";
 export type TodoList = {
-  id: number;
+  id: string;
   name: string;
 };
 

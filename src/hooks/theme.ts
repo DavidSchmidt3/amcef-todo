@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
-// TODO: change key after known domain
-const THEME_KEY = "amcef-todo-app-theme";
+const THEME_KEY = `amcef-todo-app-theme.${import.meta.env.VERCEL_URL}`;
 const DEFAULT_THEME = "light";
 
 export const useTheme = () => {

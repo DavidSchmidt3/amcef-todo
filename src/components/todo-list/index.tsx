@@ -16,7 +16,7 @@ export default function TodoList({ todoList }: Props) {
     useFilteredTodoItems(todoItems);
 
   return (
-    <div className="w-full p-2 border sm:p-4">
+    <div className="w-full p-2 border rounded-md sm:p-4">
       <h2 className="text-3xl text-center">{todoList.name}</h2>
       <ul>
         {isLoading ? (
@@ -26,9 +26,13 @@ export default function TodoList({ todoList }: Props) {
             <TodoListFilter value={filter} setValue={setFilter} />
             <TodoListSearch value={search} setValue={setSearch} />
             <div className="flex flex-col mt-2 gap-y-2">
-              {filteredTodoItems?.map((todoItem) => (
-                <TodoItem key={todoItem.id} todoItem={todoItem} />
-              )) ?? <h3 className="text-2xl text-center">No tasks found</h3>}
+              {filteredTodoItems?.length ? (
+                filteredTodoItems.map((todoItem) => (
+                  <TodoItem key={todoItem.id} todoItem={todoItem} />
+                ))
+              ) : (
+                <h3 className="text-2xl text-center">No tasks found</h3>
+              )}
             </div>
           </>
         )}

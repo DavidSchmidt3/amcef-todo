@@ -19,7 +19,7 @@ export default function Actions({ todoItem }: Props) {
   return (
     <div className="flex mt-2 gap-x-2">
       <Button
-        className="flex items-center justify-center w-full px-4 py-2 text-sm rounded bg-primary sm:w-80"
+        className="flex items-center justify-center w-full px-4 py-2 text-sm rounded-md bg-primary sm:w-80"
         onClick={() => toggleCompleteTodoItem(todoItem)}
         disabled={isToggleCompletePending || todoItem.is_pending}
       >
@@ -29,7 +29,7 @@ export default function Actions({ todoItem }: Props) {
         {todoItem.is_completed ? "Mark as incomplete" : "Mark as complete"}
       </Button>
       <Button
-        className="flex items-center justify-center w-full px-4 py-2 text-sm rounded bg-destructive sm:w-80"
+        className="flex items-center justify-center w-full px-4 py-2 text-sm rounded-md bg-destructive sm:w-80"
         onClick={() => deleteTodoItem(todoItem)}
         disabled={isDeletePending || todoItem.is_pending}
       >

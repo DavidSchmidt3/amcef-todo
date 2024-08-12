@@ -117,8 +117,8 @@ export default function DatePickerField<
                                 : "hover:bg-gray-700",
                               "isInCurrentMonth" in item &&
                                 item.isInCurrentMonth
-                                ? "text-white"
-                                : "hover:text-white",
+                                ? "text-foreground"
+                                : "hover:text-foreground",
                               item.type === "day" && "h-8 w-8",
                               item.isSelected && "bg-gray-600",
                               item.isToday && "border border-gray-500"
@@ -141,7 +141,7 @@ export default function DatePickerField<
                     <Datepicker.Button
                       action="today"
                       type="button"
-                      className="w-full p-2 mt-4 text-sm font-medium bg-blue-700 hover:bg-blue-600"
+                      className="w-full p-2 mt-4 text-sm font-medium rounded-md bg-primary"
                     >
                       Today
                     </Datepicker.Button>

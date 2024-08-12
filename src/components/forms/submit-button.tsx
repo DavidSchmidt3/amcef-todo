@@ -9,7 +9,7 @@ type Props = {
 export function SubmitButton({ isPending, title }: Props) {
   return (
     <Button
-      className="flex items-center justify-center w-full px-4 py-2 text-sm rounded bg-primary sm:w-80"
+      className="flex items-center justify-center w-full px-4 py-2 text-sm rounded-md bg-primary sm:w-80"
       type="submit"
       disabled={isPending}
     >

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
-const THEME_KEY = `amcef-todo-app-theme.${import.meta.env.VERCEL_URL}`;
+const THEME_KEY = `theme.${import.meta.env.VITE_VERCEL_URL}`;
 const DEFAULT_THEME = "light";
 
 export const useTheme = () => {

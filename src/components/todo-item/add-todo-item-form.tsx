@@ -39,6 +39,7 @@ export default function AddTodoItemForm({ todoListId }: Props) {
       description: "",
       is_completed: false,
       todo_listId: todoListId,
+      due_date: null,
     };
   }, [todoListId]);
 

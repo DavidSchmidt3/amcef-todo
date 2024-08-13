@@ -28,7 +28,7 @@ export default function Filter({ value, setValue }: Props) {
             >
               <div className="flex items-center justify-between w-full">
                 <div className="text-sm/6">
-                  <p className="font-semibold text-foreground">{plan.name}</p>
+                  <p className="font-semibold text-foreground">{option.name}</p>
                 </div>
                 <Icons.tick className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />
               </div>

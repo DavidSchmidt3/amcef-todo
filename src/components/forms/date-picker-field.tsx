@@ -1,3 +1,4 @@
+import DatePickerPrimitive from "@/components/ui/date-picker-primitive";
 import { Field } from "@headlessui/react";
 import {
   Controller,
@@ -5,7 +6,6 @@ import {
   FieldValues,
   UseFormReturn,
 } from "react-hook-form";
-import DatePickerPrimitive from "../ui/date-picker-primitive";
 
 type Props<T extends FieldValues, K extends FieldPath<T>> = {
   form: UseFormReturn<T>;

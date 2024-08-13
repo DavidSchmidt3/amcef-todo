@@ -56,25 +56,20 @@ export const useTodoItemAddMutation = () => {
       await axios.post(getUrl(todoItem.todo_listId), todoItem);
       return newTodoItem;
     },
-    onSuccess: (todoItem: TodoItem) => {
+    onSuccess: (todoItem) => {
       queryClient.invalidateQueries({
         queryKey: [TODO_ITEMS_KEY, todoItem.todo_listId],
       });
     },
-    onError: (_, __, context?: TodoItem) => {
-      if (!context) return;
-      queryClient.setQueryData<TodoItem[] | undefined>(
-        [TODO_ITEMS_KEY, context.todo_listId],
-        (data) => {
-          if (!data) return data;
-          return data.filter((item) => item.id !== context.id);
-        }
-      );
+    onError: (_, todoItem) => {
+      queryClient.invalidateQueries({
+        queryKey: [TODO_ITEMS_KEY, todoItem.todo_listId],
+      });
     },
   });
 };
 
-function updateTodoItemCompletion(
+function toggleTodoItemCompletion(
   queryClient: QueryClient,
   todoItem: TodoItem
 ) {
@@ -96,7 +91,7 @@ export const useTodoItemToggleCompleteMutation = () => {
 
   return useMutation({
     mutationFn: async (todoItem: TodoItem) => {
-      updateTodoItemCompletion(queryClient, todoItem);
+      toggleTodoItemCompletion(queryClient, todoItem);
 
       await axios.put(`${getUrl(todoItem.todo_listId)}/${todoItem.id}`, {
         ...todoItem,
@@ -106,7 +101,7 @@ export const useTodoItemToggleCompleteMutation = () => {
       return todoItem;
     },
     onError: (_, todoItem) => {
-      updateTodoItemCompletion(queryClient, todoItem);
+      toggleTodoItemCompletion(queryClient, todoItem);
     },
   });
 };
@@ -125,7 +120,6 @@ export const useTodoItemDeleteMutation = () => {
       );
 
       await axios.delete(`${getUrl(todoItem.todo_listId)}/${todoItem.id}`);
-
       return todoItem;
     },
     onError: (_, data) => {

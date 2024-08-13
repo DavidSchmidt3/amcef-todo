@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { FilterOptions } from "@/hooks/data/todo-lists";
+import { FilterOptions } from "@/hooks/todos-filter";
 import { Radio, RadioGroup } from "@headlessui/react";
 
 const OPTIONS = [

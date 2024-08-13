@@ -1,7 +1,7 @@
 import { TodoItem } from "@/hooks/data/todo-item";
-import { FilterOptions } from "@/hooks/data/todo-lists";
 import { useMemo, useState } from "react";
 
+export type FilterOptions = "all" | "active" | "completed";
 export const useFilteredTodoItems = (todoItems: TodoItem[] | undefined) => {
   const [filter, setFilter] = useState<FilterOptions>("all");
   const [search, setSearch] = useState("");

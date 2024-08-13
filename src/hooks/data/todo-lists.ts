@@ -4,7 +4,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const TODO_LISTS_KEY = "todo_lists";
-export type FilterOptions = "all" | "active" | "completed";
 export type TodoList = {
   id: string;
   name: string;

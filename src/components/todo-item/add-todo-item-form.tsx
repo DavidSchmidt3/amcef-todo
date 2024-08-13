@@ -32,12 +32,7 @@ type Props = {
 };
 
 export default function AddTodoItemForm({ todoListId }: Props) {
-  const {
-    mutate: addTodoItem,
-    isPending,
-    isSuccess,
-    reset,
-  } = useTodoItemAddMutation();
+  const { mutate: addTodoItem, isPending, reset } = useTodoItemAddMutation();
   const defaultValues = useMemo<AddTodoItemFormValues>(() => {
     return {
       title: "",
@@ -58,11 +53,11 @@ export default function AddTodoItemForm({ todoListId }: Props) {
   }
 
   useEffect(() => {
-    if (isSuccess) {
+    if (form.formState.isSubmitSuccessful) {
       form.reset();
       reset();
     }
-  }, [form, isSuccess, reset]);
+  }, [form, reset, form.formState.isSubmitSuccessful]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full p-5 mt-2 border rounded-md">

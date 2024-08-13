@@ -20,12 +20,7 @@ const ADD_TODO_LIST_FORM_SCHEMA = z.object({
 export type AddTodoListFormValues = z.infer<typeof ADD_TODO_LIST_FORM_SCHEMA>;
 
 export default function AddTodoListForm() {
-  const {
-    mutate: addTodoList,
-    isPending,
-    isSuccess,
-    reset,
-  } = useTodoListAddMutation();
+  const { mutate: addTodoList, isPending, reset } = useTodoListAddMutation();
   const defaultValues = useMemo<AddTodoListFormValues>(() => {
     return {
       name: "",
@@ -42,11 +37,11 @@ export default function AddTodoListForm() {
   }
 
   useEffect(() => {
-    if (isSuccess) {
+    if (form.formState.isSubmitSuccessful) {
       form.reset();
       reset();
     }
-  }, [form, isSuccess, reset]);
+  }, [form, reset, form.formState.isSubmitSuccessful]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full p-5">

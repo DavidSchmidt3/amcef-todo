@@ -3,7 +3,7 @@ import { SubmitButton } from "@/components/forms/submit-button";
 import TextField from "@/components/forms/text-field";
 import { useTodoItemAddMutation } from "@/hooks/data/todo-item";
 import { useControlledForm } from "@/hooks/form";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import * as z from "zod";
 
 const MIN_NAME_LENGTH = 3;
@@ -32,7 +32,12 @@ type Props = {
 };
 
 export default function AddTodoItemForm({ todoListId }: Props) {
-  const { mutate: addTodoItem, isPending } = useTodoItemAddMutation();
+  const {
+    mutate: addTodoItem,
+    isPending,
+    isSuccess,
+    reset,
+  } = useTodoItemAddMutation();
   const defaultValues = useMemo<AddTodoItemFormValues>(() => {
     return {
       title: "",
@@ -50,8 +55,14 @@ export default function AddTodoItemForm({ todoListId }: Props) {
 
   function onSubmit(values: AddTodoItemFormValues) {
     addTodoItem(values);
-    form.reset();
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      form.reset();
+      reset();
+    }
+  }, [form, isSuccess, reset]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full p-5 mt-2 border rounded-md">
